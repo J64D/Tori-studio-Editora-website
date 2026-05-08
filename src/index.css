@@ -33,6 +33,34 @@
     box-sizing: border-box;
   }
 
+  html {
+    font-size: 85%; /* Zoom out default para telas de notebook/médias (aprox 13.6px) */
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 90%; 
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 80%; /* Equivale ao "zoom de 80%" nas telas de 1024-1280 (como a de 1152) */
+    }
+  }
+
+  @media (min-width: 1440px) {
+    html {
+      font-size: 90%; 
+    }
+  }
+
+  @media (min-width: 1900px) {
+    html {
+      font-size: 100%; /* Telas gigantes ficam com a escala original de 16px */
+    }
+  }
+
   body {
     @apply bg-background text-on-background font-sans antialiased;
     background-color: #030303;
