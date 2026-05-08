@@ -317,14 +317,12 @@ export default function App() {
           className={`fixed top-0 left-0 right-0 h-16 lg:h-20 z-[60] flex items-center justify-between px-6 lg:px-8 xl:px-12 transition-colors duration-500 ${isScrolled ? 'bg-background/95 backdrop-blur-xl border-b border-white/5' : 'bg-gradient-to-b from-black/80 to-transparent'}`}
         >
           <div className="flex items-center gap-10">
-            <button className="lg:hidden p-2 rounded-full hover:bg-white/10">
-              <Menu size={24} />
-            </button>
             <div 
               onClick={() => navigateTo('home')}
-              className="text-2xl lg:text-3xl font-black tracking-tighter text-primary cursor-pointer transition-transform active:scale-95 uppercase"
+              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-3"
             >
-              TORI STUDIO
+              <img src="/logotipoTori.png" alt="Tori Studio Logo" className="h-6 lg:h-8 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+              <span className="text-2xl lg:text-3xl font-black tracking-tighter text-primary uppercase">TORI STUDIO</span>
             </div>
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
@@ -655,7 +653,7 @@ function HomeView({ onComicSelect, onAudioSelect, comics }: {
   return (
     <div className="flex flex-col">
       {/* Hero Banner */}
-      <section className="relative h-[85vh] w-full flex items-end p-6 lg:p-12 xl:p-20 overflow-hidden">
+      <section className="relative min-h-[85vh] w-full flex items-end p-6 pb-16 lg:p-12 xl:p-20 overflow-hidden">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -739,7 +737,7 @@ function HomeView({ onComicSelect, onAudioSelect, comics }: {
       </section>
 
       {/* Content Rows */}
-      <div className="px-6 lg:px-12 xl:px-20 -mt-20 relative z-20 pb-20">
+      <div className="px-6 lg:px-12 xl:px-20 mt-8 lg:-mt-20 relative z-20 pb-20">
         <HomeRow title="Continuar Lendo" comics={comics} onComicSelect={onComicSelect} />
         
         {/* Mobile-only AudioStorys if needed, or just desktop */}
