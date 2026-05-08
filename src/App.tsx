@@ -187,7 +187,7 @@ export default function App() {
         {/* Logo no topo da sidebar */}
         <div 
           onClick={() => navigateTo('home')}
-          className={`flex items-center gap-3 px-6 h-20 border-b border-white/5 cursor-pointer shrink-0 ${isSidebarCollapsed ? 'justify-center' : ''}`}
+          className={`flex items-center gap-4 px-6 h-20 border-b border-white/5 cursor-pointer shrink-0 ${isSidebarCollapsed ? 'justify-center' : ''}`}
         >
           <img src="/logotipoTori.png" alt="Tori Studio" className="h-8 object-contain shrink-0" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           {!isSidebarCollapsed && (
@@ -199,7 +199,6 @@ export default function App() {
             </motion.span>
           )}
         </div>
-      >
         <div className={`p-8 mb-4 flex flex-col ${isSidebarCollapsed ? 'items-center' : ''}`}>
           <div 
             onClick={() => navigateTo(user ? 'profileSelection' : 'login')}
@@ -335,7 +334,7 @@ export default function App() {
           <div className="flex items-center gap-10">
             <div 
               onClick={() => navigateTo('home')}
-              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-3"
+              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-4 ml-2"
             >
               <img src="/logotipoTori.png" alt="Tori Studio Logo" className="h-6 lg:h-8 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
               <span className="text-2xl lg:text-3xl font-black tracking-tighter text-primary uppercase">TORI STUDIO</span>
