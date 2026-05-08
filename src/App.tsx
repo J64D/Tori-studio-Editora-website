@@ -334,7 +334,7 @@ export default function App() {
           <div className="flex items-center gap-10 min-w-0">
             <div 
               onClick={() => navigateTo('home')}
-              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-4 ml-2 min-w-0"
+              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-6 ml-4 min-w-0"
             >
               <img src="/logotipoTori.png" alt="Tori Studio Logo" className="h-8 lg:h-10 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
               <span className="text-2xl lg:text-3xl font-black tracking-tighter text-primary uppercase truncate max-w-[8rem] lg:max-w-none">TORI STUDIO</span>
@@ -409,7 +409,7 @@ export default function App() {
               : 0)
         }}
         transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-        className="transition-all duration-500 pb-24 lg:pb-0"
+        className="transition-all duration-500 pt-20 lg:pt-24 pb-24 lg:pb-0"
       >
         <AnimatePresence mode="wait">
           {currentView === 'home' && (
