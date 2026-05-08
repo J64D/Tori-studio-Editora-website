@@ -68,6 +68,22 @@ export default function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [profiles, setProfiles] = useState<UserProfile[]>(MOCK_PROFILES);
   const [activeProfile, setActiveProfile] = useState<UserProfile>(MOCK_PROFILES[0]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Sync activeProfile with authProfile when user logs in
+  useEffect(() => {
+    if (authProfile) {
+      setActiveProfile(authProfile);
+    } else {
+      setActiveProfile(MOCK_PROFILES[0]);
+    }
+  }, [authProfile]);
   const [selectedAudioStory, setSelectedAudioStory] = useState<AudioStory | null>(null);
   const [comics, setComics] = useState<Comic[]>(MOCK_COMICS);
   const [listenedAudioCount, setListenedAudioCount] = useState(0);
@@ -296,9 +312,9 @@ export default function App() {
       {/* Top App Bar - Fixed */}
       {currentView !== 'reader' && currentView !== 'login' && currentView !== 'signup' && (
         <motion.header 
-          animate={{ paddingLeft: isSidebarCollapsed ? 96 : 320 }}
+          animate={{ paddingLeft: isMobile ? 0 : (isSidebarCollapsed ? 96 : 280) }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className={`fixed top-0 left-0 right-0 h-16 lg:h-20 z-[60] flex items-center justify-between px-6 lg:px-12 transition-colors duration-500 ${isScrolled ? 'bg-background/95 backdrop-blur-xl border-b border-white/5' : 'bg-gradient-to-b from-black/80 to-transparent'}`}
+          className={`fixed top-0 left-0 right-0 h-16 lg:h-20 z-[60] flex items-center justify-between px-6 lg:px-8 xl:px-12 transition-colors duration-500 ${isScrolled ? 'bg-background/95 backdrop-blur-xl border-b border-white/5' : 'bg-gradient-to-b from-black/80 to-transparent'}`}
         >
           <div className="flex items-center gap-10">
             <button className="lg:hidden p-2 rounded-full hover:bg-white/10">
@@ -373,9 +389,11 @@ export default function App() {
       {/* Main Content Area */}
       <motion.main 
         animate={{ 
-          paddingLeft: (currentView !== 'reader' && currentView !== 'login' && currentView !== 'signup') 
-            ? (isSidebarCollapsed ? 96 : 320) 
-            : 0 
+          paddingLeft: isMobile 
+            ? 0 
+            : ((currentView !== 'reader' && currentView !== 'login' && currentView !== 'signup') 
+              ? (isSidebarCollapsed ? 96 : 280) 
+              : 0)
         }}
         transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
         className="transition-all duration-500 pb-24 lg:pb-0"
