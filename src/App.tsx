@@ -60,7 +60,7 @@ type SearchViewProps = {
 };
 
 export default function App() {
-  const { user, logout } = useAuth();
+  const { user, profile: authProfile, logout, updateProfileData } = useAuth();
   const [currentView, setCurrentView] = useState<View>('home');
   const [selectedComic, setSelectedComic] = useState<Comic | null>(null);
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
@@ -77,6 +77,7 @@ export default function App() {
     if (user?.email === 'jarodsystem64@gmail.com' && activeProfile.role !== 'author') {
       const updated = { ...activeProfile, role: 'author' as const };
       setActiveProfile(updated);
+      updateProfileData({ role: 'author' });
       setProfiles(prev => prev.map(p => p.id === updated.id ? updated : p));
     }
   }, [user?.email, activeProfile.role]);
@@ -496,9 +497,10 @@ export default function App() {
             >
               <EditProfileView 
                 profile={activeProfile} 
-                onSave={(updated) => {
+                onSave={async (updated) => {
                   setProfiles(prev => prev.map(p => p.id === updated.id ? updated : p));
                   setActiveProfile(updated);
+                  await updateProfileData({ name: updated.name, avatar: updated.avatar });
                   navigateTo('settings');
                 }}
                 onBack={() => navigateTo('settings')}
@@ -537,10 +539,11 @@ export default function App() {
             >
               <PlanSelectionView 
                 currentPlan={activeProfile.plan}
-                onSelectPlan={(newPlan) => {
+                onSelectPlan={async (newPlan) => {
                   const updated = { ...activeProfile, plan: newPlan };
                   setActiveProfile(updated);
                   setProfiles(prev => prev.map(p => p.id === updated.id ? updated : p));
+                  await updateProfileData({ plan: newPlan });
                   navigateTo('settings');
                 }}
                 onBack={() => navigateTo('settings')}
@@ -557,10 +560,11 @@ export default function App() {
             >
               <WriterOnboardingView 
                 onBack={() => navigateTo('home')} 
-                onSuccess={() => {
+                onSuccess={async () => {
                   const updated = { ...activeProfile, role: 'author' as const };
                   setActiveProfile(updated);
                   setProfiles(prev => prev.map(p => p.id === updated.id ? updated : p));
+                  await updateProfileData({ role: 'author' });
                   navigateTo('author-dashboard');
                 }} 
               />
