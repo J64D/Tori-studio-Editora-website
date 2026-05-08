@@ -32,24 +32,9 @@ Uma nova forma de consumir histórias. O player estilo **Visual Novel** oferece:
 -   **Minha Lista**: Salve suas obras favoritas em uma biblioteca dedicada.
 -   **Exploração Inteligente**: Filtros por categorias (Ação, Fantasia, AudioStorys, etc).
 
-## 🚀 Como Executar Localmente
+## 🌐 Acesse Agora
 
-**Pré-requisitos:** Node.js (v18+)
-
-1. **Clonar e Instalar:**
-   ```bash
-   npm install
-   ```
-
-2. **Iniciar em Desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
-
-3. **Gerar Build de Produção:**
-   ```bash
-   npm run build
-   ```
+O site está disponível online em: **[tori-studio-editora-website.vercel.app](https://tori-studio-editora-website.vercel.app)**
 
 ## 🛠️ Tecnologias Utilizadas
 

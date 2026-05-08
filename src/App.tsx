@@ -182,7 +182,23 @@ export default function App() {
         <motion.aside 
         animate={{ width: isSidebarCollapsed ? 96 : 280 }}
         transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-        className="hidden lg:flex flex-col fixed left-0 top-0 h-screen bg-surface-container-low border-r border-white/5 z-[70] pt-20"
+        className="hidden lg:flex flex-col fixed left-0 top-0 h-screen bg-surface-container-low border-r border-white/5 z-[70]"
+      >
+        {/* Logo no topo da sidebar */}
+        <div 
+          onClick={() => navigateTo('home')}
+          className={`flex items-center gap-3 px-6 h-20 border-b border-white/5 cursor-pointer shrink-0 ${isSidebarCollapsed ? 'justify-center' : ''}`}
+        >
+          <img src="/logotipoTori.png" alt="Tori Studio" className="h-8 object-contain shrink-0" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          {!isSidebarCollapsed && (
+            <motion.span 
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}
+              className="text-xl font-black tracking-tighter text-primary uppercase whitespace-nowrap"
+            >
+              TORI STUDIO
+            </motion.span>
+          )}
+        </div>
       >
         <div className={`p-8 mb-4 flex flex-col ${isSidebarCollapsed ? 'items-center' : ''}`}>
           <div 
