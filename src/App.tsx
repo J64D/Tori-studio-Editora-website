@@ -655,7 +655,7 @@ function HomeView({ onComicSelect, onAudioSelect, comics }: {
   return (
     <div className="flex flex-col">
       {/* Hero Banner */}
-      <section className="relative h-[85vh] w-full flex items-end p-8 lg:p-20 overflow-hidden">
+      <section className="relative h-[85vh] w-full flex items-end p-6 lg:p-12 xl:p-20 overflow-hidden">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -739,7 +739,7 @@ function HomeView({ onComicSelect, onAudioSelect, comics }: {
       </section>
 
       {/* Content Rows */}
-      <div className="px-8 lg:px-20 -mt-20 relative z-20 pb-20">
+      <div className="px-6 lg:px-12 xl:px-20 -mt-20 relative z-20 pb-20">
         <HomeRow title="Continuar Lendo" comics={comics} onComicSelect={onComicSelect} />
         
         {/* Mobile-only AudioStorys if needed, or just desktop */}
@@ -837,7 +837,7 @@ function DetailView({ comic, onBack, onRead, onToggleSave, onVote }: { comic: Co
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-[65vh] w-full flex items-end p-8 lg:p-20">
+      <section className="relative h-[65vh] w-full flex items-end p-6 lg:p-12 xl:p-20">
         <div className="absolute inset-0 z-0">
           <img 
             src={comic.coverUrl} 
@@ -1169,7 +1169,7 @@ function LibraryView({ onComicSelect, comics }: { onComicSelect: (c: Comic) => v
   }, [filter, comics, activeTab]);
 
   return (
-    <div className="p-8 lg:p-20">
+    <div className="p-6 lg:p-12 xl:p-20">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
         <div>
           <h1 className="text-4xl lg:text-5xl font-black mb-4 uppercase italic tracking-tighter">Minha Biblioteca</h1>
@@ -1292,7 +1292,7 @@ function SearchView({ onComicSelect, onAudioSelect }: SearchViewProps) {
   ];
 
   return (
-    <div className="p-8 lg:p-20">
+    <div className="p-6 lg:p-12 xl:p-20">
       <div className="mb-16 relative group max-w-4xl">
         <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
           <SearchIcon className="text-on-surface-variant group-focus-within:text-primary transition-colors" />
@@ -1521,7 +1521,7 @@ function HomeRow({ title, comics, onComicSelect }: { title: string, comics: Comi
 
 function ProfileView({ profile }: { profile: UserProfile }) {
   return (
-    <div className="p-8 lg:p-20 flex flex-col items-center justify-center min-h-[60vh] text-center">
+    <div className="p-6 lg:p-12 xl:p-20 flex flex-col items-center justify-center min-h-[60vh] text-center">
       <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary mb-8 shadow-2xl shadow-primary/20">
         <img 
           src={profile.avatar} 
