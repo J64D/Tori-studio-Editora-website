@@ -331,13 +331,13 @@ export default function App() {
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
           className={`fixed top-0 left-0 right-0 h-16 lg:h-20 z-[60] flex items-center justify-between px-6 lg:px-8 xl:px-12 transition-colors duration-500 ${isScrolled ? 'bg-background/95 backdrop-blur-xl border-b border-white/5' : 'bg-gradient-to-b from-black/80 to-transparent'}`}
         >
-          <div className="flex items-center gap-10 min-w-0">
+          <div className="flex items-center gap-10">
             <div 
               onClick={() => navigateTo('home')}
-              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-6 ml-4 min-w-0"
+              className="cursor-pointer transition-transform active:scale-95 flex items-center gap-3"
             >
               <img src="/logotipoTori.png" alt="Tori Studio Logo" className="h-8 lg:h-10 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-              <span className="text-2xl lg:text-3xl font-black tracking-tighter text-primary uppercase truncate max-w-[8rem] lg:max-w-none">TORI STUDIO</span>
+              <span className="text-2xl lg:text-3xl font-black tracking-tighter text-primary uppercase">TORI STUDIO</span>
             </div>
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
@@ -840,7 +840,7 @@ function DetailView({ comic, onBack, onRead, onToggleSave, onVote }: { comic: Co
   return (
     <div className="relative flex flex-col min-h-screen">
       {/* Header Overly */}
-      <header className="fixed top-0 left-0 lg:left-80 right-0 h-20 px-8 flex items-center justify-between z-50 bg-gradient-to-b from-background/80 to-transparent backdrop-blur-md">
+      <header className="fixed top-16 lg:top-20 left-0 lg:left-80 right-0 h-20 px-8 flex items-center justify-between z-50 bg-gradient-to-b from-background/80 to-transparent backdrop-blur-md">
         <button onClick={onBack} className="p-2 rounded-full hover:bg-white/10 transition-colors">
           <ArrowLeft />
         </button>
