@@ -189,7 +189,7 @@ export default function App() {
           onClick={() => navigateTo('home')}
           className={`flex items-center gap-4 px-6 h-20 border-b border-white/5 cursor-pointer shrink-0 ${isSidebarCollapsed ? 'justify-center' : ''}`}
         >
-          <img src="/logotipoTori.png" alt="Tori Studio" className="h-8 object-contain shrink-0" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          <img src="/logotipoTori.png" alt="Tori Studio" className="h-10 lg:h-12 object-contain shrink-0" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           {!isSidebarCollapsed && (
             <motion.span 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}
@@ -336,7 +336,7 @@ export default function App() {
               onClick={() => navigateTo('home')}
               className="cursor-pointer transition-transform active:scale-95 flex items-center gap-4 ml-2"
             >
-              <img src="/logotipoTori.png" alt="Tori Studio Logo" className="h-6 lg:h-8 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+              <img src="/logotipoTori.png" alt="Tori Studio Logo" className="h-8 lg:h-10 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
               <span className="text-2xl lg:text-3xl font-black tracking-tighter text-primary uppercase">TORI STUDIO</span>
             </div>
             {/* Desktop Nav */}
