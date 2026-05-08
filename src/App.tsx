@@ -180,7 +180,7 @@ export default function App() {
     <div className="min-h-screen bg-background text-on-background selection:bg-primary selection:text-white">
       {currentView !== 'login' && currentView !== 'signup' && currentView !== 'reader' && (
         <motion.aside 
-        animate={{ width: isSidebarCollapsed ? 96 : 320 }}
+        animate={{ width: isSidebarCollapsed ? 96 : 280 }}
         transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
         className="hidden lg:flex flex-col fixed left-0 top-0 h-screen bg-surface-container-low border-r border-white/5 z-[70] pt-20"
       >
