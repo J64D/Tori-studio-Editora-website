@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { CheckoutModal } from './CheckoutModal';
 import { Check, Star, Zap, Crown, ArrowLeft } from 'lucide-react';
 import { UserProfile } from '../types';
 
@@ -10,6 +11,9 @@ interface PlanSelectionViewProps {
 }
 
 export const PlanSelectionView: React.FC<PlanSelectionViewProps> = ({ currentPlan, onSelectPlan, onBack }) => {
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [selectedPlanForCheckout, setSelectedPlanForCheckout] = useState<{name: UserProfile['plan'], price: string} | null>(null);
+
   const plans = [
     {
       name: 'Free' as const,
@@ -126,7 +130,15 @@ export const PlanSelectionView: React.FC<PlanSelectionViewProps> = ({ currentPla
               </div>
 
               <button
-                onClick={() => plan.name !== currentPlan && onSelectPlan(plan.name)}
+                onClick={() => {
+                  if (plan.name === currentPlan) return;
+                  if (plan.price === 'R$ 0') {
+                    onSelectPlan(plan.name);
+                  } else {
+                    setSelectedPlanForCheckout({ name: plan.name, price: plan.price });
+                    setIsCheckoutOpen(true);
+                  }
+                }}
                 disabled={plan.name === currentPlan}
                 className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest transition-all ${
                   plan.name === currentPlan
@@ -146,6 +158,20 @@ export const PlanSelectionView: React.FC<PlanSelectionViewProps> = ({ currentPla
           * Você pode alterar ou cancelar seu plano a qualquer momento. Termos e condições se aplicam.
         </p>
       </div>
+
+      <AnimatePresence>
+        {isCheckoutOpen && selectedPlanForCheckout && (
+          <CheckoutModal 
+            planName={selectedPlanForCheckout.name}
+            price={selectedPlanForCheckout.price}
+            onClose={() => setIsCheckoutOpen(false)}
+            onSuccess={() => {
+              setIsCheckoutOpen(false);
+              onSelectPlan(selectedPlanForCheckout.name);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
